@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://ll8ffph84wip"]
+
+[ext_resource type="Script" path="res://Node2D.gd" id="1_f022b"]
+[ext_resource type="PackedScene" uid="uid://byp8l8xkumd31" path="res://MagneticObject.tscn" id="2_7s0k1"]
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="2_52mqi"]
+[ext_resource type="Material" uid="uid://cr4ahogxrvgy0" path="res://TransparentShaderMaterial.tres" id="4_8v6o6"]
+[ext_resource type="Texture2D" uid="uid://cg8gnfkfilnt6" path="res://sprite1.webp" id="4_i237b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1pmaq"]
+radius = 12.6263
+height = 27.2727
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oi6y1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_f022b")
+
+[node name="MagneticObject" parent="." instance=ExtResource("2_7s0k1")]
+position = Vector2(600.82, 600)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_52mqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+material = ExtResource("4_8v6o6")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_i237b")
+offset = Vector2(2.08165e-12, 2.08165e-12)
+region_enabled = true
+region_rect = Rect2(348, 268, 214, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(1.98, 1.98)
+shape = SubResource("CapsuleShape2D_1pmaq")
+
+[node name="MagneticField" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MagneticField"]
+scale = Vector2(129.22, 129.22)
+shape = SubResource("CircleShape2D_oi6y1")

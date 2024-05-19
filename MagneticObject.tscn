@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://byp8l8xkumd31"]
+
+[ext_resource type="Material" uid="uid://cr4ahogxrvgy0" path="res://TransparentShaderMaterial.tres" id="1_040wb"]
+[ext_resource type="Texture2D" uid="uid://cg8gnfkfilnt6" path="res://sprite1.webp" id="2_7p071"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6kvu"]
+radius = 4.45969
+height = 13.036
+
+[node name="MagneticObject" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 1.66533e-16
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+material = ExtResource("1_040wb")
+texture = ExtResource("2_7p071")
+region_enabled = true
+region_rect = Rect2(194.859, 303.686, 55.4954, 77.6936)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(5.83, 5.83)
+shape = SubResource("CapsuleShape2D_e6kvu")
